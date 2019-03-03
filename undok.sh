@@ -15,9 +15,15 @@ then
 	ji=$(cat /etc/*-release | grep DISTRIB_ID | awk '{split($0,a,"=");print a[2]}')
 	ki="${ji,,}"
 
-	if [ "$ki" == "ubuntu" ]
+	if [ "$ki" == "bionic" ]
 	then
-        echo "IT is Ubuntu"
+     
+	sudo snap remove docker
+
+        else
+
+	sudo apt-get remove -y docker docker-engine docker.io containerd runc	
+
         fi
 
 

@@ -13,12 +13,14 @@ then
 	mi=$(lsb_release -cs)
 	mi2="${mi,,}"
 	ji=$(cat /etc/*-release | grep DISTRIB_ID | awk '{split($0,a,"=");print a[2]}')
+	si=$(cat /etc/*-release | grep DISTRIB_CODENAME | awk '{split($0,a,"=");print a[2]}')
 	ki="${ji,,}"
 
-	if [ "$ki" == "bionic" ]
+	if [ "$si" == "bionic" ]
 	then
-     
+        sudo systemctl stop docker     
 	sudo snap remove docker
+	sudo pip uninstall -y docker-compose
 
         else
        

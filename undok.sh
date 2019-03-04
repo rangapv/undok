@@ -21,8 +21,16 @@ then
 	sudo snap remove docker
 
         else
+       
+        sudo apt-get purge -y docker-engine docker docker.io docker-ce
 
-	sudo apt-get remove -y docker docker-engine docker.io containerd runc	
+        sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce
+        echo "Do you want docker-compose to be uninstalled (y/n) "
+        read dca
+        if [ "$dca" == "y" ]
+        then
+         sudo pip uninstall -y docker-compose
+        fi
 
         fi
 
